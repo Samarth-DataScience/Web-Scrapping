@@ -21,7 +21,16 @@ driver.get('https://www.smartprix.com/mobiles')
 load_more = driver.find_element(by=By.XPATH, value= '//*[@id="app"]/main/div[1]/div[3]/div[3]')
 
 # Click the "Load More" button to load additional content
-load_more.click()
+for i in range(55):
+    load_more.click()
+    print('step no. :', i+1)
+    time.sleep(2)
 
-# (Optional) Introduce a delay of 2 seconds to allow the page to load (for demonstration purposes)
-time.sleep(2)
+# Get the HTML source code of the current webpage
+html = driver.page_source
+
+# Open a file named 'smartprix_mobiles' in write mode with UTF-8 encoding
+with open('smartprix_mobiles', 'w', encoding='utf-8') as f:
+    # Write the captured HTML source code to the file
+    f.write(html)
+
